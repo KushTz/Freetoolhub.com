@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Age Calculator — FreeToolHub</title>
+<meta name="description" content="Free online age calculator. Find your exact age in years, months, days, hours and minutes. Plus your next birthday countdown."/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080d18;--surface:#0f1624;--card:#131d2e;--border:#1a2840;--accent:#ffd166;--accent2:#ff6b6b;--text:#dce8f5;--muted:#5a7299;--sans:'Space Grotesk',sans-serif;--mono:'JetBrains Mono',monospace}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;padding-bottom:60px}
+nav{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:1.2rem;font-weight:700;text-decoration:none;color:var(--text)}
+.logo span{color:#00e5b0}
+.back{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:600;transition:color .2s}
+.back:hover{color:var(--accent)}
+.main{max-width:560px;margin:0 auto;padding:32px 20px}
+.page-title{font-size:1.8rem;font-weight:700;margin-bottom:6px}
+.page-desc{color:var(--muted);font-size:.88rem;line-height:1.6;margin-bottom:24px}
+.ad-slot{border:1.5px dashed var(--border);border-radius:12px;padding:16px;text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px}
+.card{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;padding:28px 24px;margin-bottom:16px}
+.field-label{font-size:.85rem;font-weight:600;color:var(--muted);margin-bottom:8px}
+input[type="date"]{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--mono);font-size:1rem;outline:none;margin-bottom:16px;cursor:pointer;transition:border-color .2s;-webkit-appearance:none;appearance:none}
+input[type="date"]:focus{border-color:var(--accent)}
+.btn{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;border:none;border-radius:12px;padding:14px;font-family:var(--sans);font-size:.92rem;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:24px}
+.btn:hover{opacity:.9;transform:translateY(-1px)}
+.result{display:none;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.age-hero{background:var(--bg);border:2px solid var(--accent);border-radius:16px;padding:28px;text-align:center;margin-bottom:16px}
+.age-big{font-family:var(--mono);font-size:4rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.age-unit{font-size:.88rem;color:var(--muted);margin-top:6px}
+.age-exact{font-size:.82rem;color:var(--muted);margin-top:10px}
+.age-exact strong{color:var(--text)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px}
+.info-box{background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+.info-n{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--accent)}
+.info-l{font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:3px}
+.bday-box{background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.25);border-radius:12px;padding:14px 16px;font-size:.85rem;color:var(--accent);display:flex;align-items:center;gap:8px}
+.zodiac-box{background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.2);border-radius:12px;padding:14px 16px;font-size:.85rem;color:var(--accent2);display:flex;align-items:center;gap:8px;margin-top:10px}
+footer{text-align:center;color:var(--muted);font-size:.75rem;padding-top:20px;border-top:1px solid var(--border);margin-top:10px}
+footer a{color:#00e5b0;text-decoration:none;margin:0 6px}
+@media(max-width:420px){.grid3{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="index.html">Free<span>Tool</span>Hub</a>
+  <a class="back" href="index.html">← All Tools</a>
+</nav>
+
+<div class="main">
+  <div class="page-title">🎂 Age Calculator</div>
+  <p class="page-desc">Enter your date of birth to find your exact age, total days lived, next birthday countdown and more.</p>
+
+  <div class="ad-slot">Advertisement — AdSense Code Here</div>
+
+  <div class="card">
+    <div class="field-label">Your Date of Birth</div>
+    <input type="date" id="dob" onchange="calc()"/>
+    <button class="btn" onclick="calc()">🎂 Calculate My Age</button>
+
+    <div class="result" id="result">
+      <div class="age-hero">
+        <div class="age-big" id="r-years">—</div>
+        <div class="age-unit">years old</div>
+        <div class="age-exact" id="r-exact"></div>
+      </div>
+
+      <div class="grid3">
+        <div class="info-box"><div class="info-n" id="r-months">—</div><div class="info-l">Total Months</div></div>
+        <div class="info-box"><div class="info-n" id="r-weeks">—</div><div class="info-l">Total Weeks</div></div>
+        <div class="info-box"><div class="info-n" id="r-days">—</div><div class="info-l">Total Days</div></div>
+      </div>
+
+      <div class="grid2">
+        <div class="info-box"><div class="info-n" id="r-hours">—</div><div class="info-l">Total Hours</div></div>
+        <div class="info-box"><div class="info-n" id="r-min">—</div><div class="info-l">Total Minutes</div></div>
+      </div>
+
+      <div class="bday-box" id="r-bday">🎉 —</div>
+      <div class="zodiac-box" id="r-zodiac">⭐ —</div>
+    </div>
+  </div>
+
+  <div class="ad-slot">Advertisement — AdSense Code Here</div>
+
+  <footer>© 2025 <a href="index.html">FreeToolHub.com</a> · <a href="privacy.html">Privacy Policy</a> · <a href="about.html">About</a></footer>
+</div>
+
+<script>
+function calc(){
+  const dobVal=document.getElementById('dob').value;
+  if(!dobVal)return;
+  const dob=new Date(dobVal);
+  const now=new Date();
+  if(dob>now){alert('Date of birth cannot be in the future!');return}
+
+  let years=now.getFullYear()-dob.getFullYear();
+  let mo=now.getMonth()-dob.getMonth();
+  let da=now.getDate()-dob.getDate();
+  if(da<0){mo--;da+=new Date(now.getFullYear(),now.getMonth(),0).getDate()}
+  if(mo<0){years--;mo+=12}
+
+  const totalDays=Math.floor((now-dob)/864e5);
+  const totalWeeks=Math.floor(totalDays/7);
+  const totalMonths=years*12+mo;
+  const totalHours=Math.floor((now-dob)/36e5);
+  const totalMin=Math.floor((now-dob)/6e4);
+
+  // next birthday
+  let next=new Date(now.getFullYear(),dob.getMonth(),dob.getDate());
+  if(next<=now)next.setFullYear(now.getFullYear()+1);
+  const dLeft=Math.ceil((next-now)/864e5);
+
+  // zodiac
+  const z=zodiac(dob.getMonth()+1,dob.getDate());
+
+  document.getElementById('r-years').textContent=years;
+  document.getElementById('r-exact').innerHTML=`<strong>${years}</strong> yrs, <strong>${mo}</strong> months, <strong>${da}</strong> days`;
+  document.getElementById('r-months').textContent=totalMonths.toLocaleString();
+  document.getElementById('r-weeks').textContent=totalWeeks.toLocaleString();
+  document.getElementById('r-days').textContent=totalDays.toLocaleString();
+  document.getElementById('r-hours').textContent=totalHours.toLocaleString();
+  document.getElementById('r-min').textContent=totalMin.toLocaleString();
+  document.getElementById('r-bday').textContent=dLeft===0?'🎉 Happy Birthday today!':'🎉 Next birthday in '+dLeft+' day'+(dLeft!==1?'s':'');
+  document.getElementById('r-zodiac').textContent='⭐ Your zodiac sign: '+z;
+  document.getElementById('result').style.display='block';
+}
+
+function zodiac(m,d){
+  if((m===3&&d>=21)||(m===4&&d<=19))return'Aries ♈';
+  if((m===4&&d>=20)||(m===5&&d<=20))return'Taurus ♉';
+  if((m===5&&d>=21)||(m===6&&d<=20))return'Gemini ♊';
+  if((m===6&&d>=21)||(m===7&&d<=22))return'Cancer ♋';
+  if((m===7&&d>=23)||(m===8&&d<=22))return'Leo ♌';
+  if((m===8&&d>=23)||(m===9&&d<=22))return'Virgo ♍';
+  if((m===9&&d>=23)||(m===10&&d<=22))return'Libra ♎';
+  if((m===10&&d>=23)||(m===11&&d<=21))return'Scorpio ♏';
+  if((m===11&&d>=22)||(m===12&&d<=21))return'Sagittarius ♐';
+  if((m===12&&d>=22)||(m===1&&d<=19))return'Capricorn ♑';
+  if((m===1&&d>=20)||(m===2&&d<=18))return'Aquarius ♒';
+  return'Pisces ♓';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FreeToolHub — Free Online Tools for Everyone</title>
+<meta name="description" content="Free online tools including password generator, word counter, age calculator and QR code generator. Fast, free and private."/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080d18;--surface:#0f1624;--card:#131d2e;--border:#1a2840;
+  --accent:#00e5b0;--accent2:#4f8eff;--text:#dce8f5;--muted:#5a7299;
+  --sans:'Space Grotesk',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh}
+
+/* NAV */
+nav{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:1.2rem;font-weight:700;text-decoration:none;color:var(--text)}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:20px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:600;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+
+/* HERO */
+.hero{text-align:center;padding:64px 20px 48px;max-width:640px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,229,176,.1);border:1px solid rgba(0,229,176,.25);border-radius:30px;padding:6px 16px;font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-.03em;margin-bottom:14px}
+h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{color:var(--muted);font-size:1rem;line-height:1.7;max-width:480px;margin:0 auto}
+
+/* AD */
+.ad-slot{border:1.5px dashed var(--border);border-radius:12px;padding:16px;text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin:0 auto 32px;max-width:728px}
+
+/* TOOLS GRID */
+.section{max-width:880px;margin:0 auto;padding:0 20px 60px}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+
+.tool-card{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  padding:28px 24px;
+  text-decoration:none;
+  color:var(--text);
+  display:block;
+  transition:all .25s;
+  position:relative;
+  overflow:hidden;
+}
+.tool-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--c1,#00e5b0),var(--c2,#4f8eff));
+  opacity:0;transition:opacity .25s;
+}
+.tool-card:hover{border-color:var(--c1,var(--accent));transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.tool-card:hover::before{opacity:.05}
+
+.tool-icon{font-size:2.2rem;margin-bottom:14px;display:block;position:relative}
+.tool-name{font-size:1.05rem;font-weight:700;margin-bottom:6px;position:relative}
+.tool-desc{font-size:.82rem;color:var(--muted);line-height:1.6;position:relative}
+.tool-arrow{
+  position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:1rem;
+  transition:all .25s;
+}
+.tool-card:hover .tool-arrow{background:var(--c1,var(--accent));color:#000;transform:translateY(-50%) translateX(2px)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.stat-n{font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-l{font-size:.75rem;color:var(--muted);margin-top:4px}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:24px;text-align:center;color:var(--muted);font-size:.78rem}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+
+@media(max-width:480px){
+  .stats{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">Free<span>Tool</span>Hub</a>
+  <div class="nav-links">
+    <a href="password-generator.html">Password</a>
+    <a href="word-counter.html">Word Counter</a>
+    <a href="age-calculator.html">Age Calc</a>
+    <a href="qr-code-generator.html">QR Code</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">✦ 100% Free · No Login Required</div>
+  <h1>Simple Tools,<br/><span>Smarter Results</span></h1>
+  <p class="hero-sub">Everything you need in one place — fast, private, and completely free. No sign-up, no tracking, no hassle.</p>
+</div>
+
+<div class="section">
+  <!-- AD TOP -->
+  <div class="ad-slot" style="margin-bottom:32px">Advertisement — AdSense Code Here</div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">Free Tools</div></div>
+    <div class="stat"><div class="stat-n">0</div><div class="stat-l">Data Stored</div></div>
+    <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Times You Can Use</div></div>
+  </div>
+
+  <div class="section-label">All Tools</div>
+
+  <div class="tools-grid">
+
+    <a class="tool-card" href="password-generator.html" style="--c1:#00e5b0;--c2:#4f8eff">
+      <span class="tool-icon">🔐</span>
+      <div class="tool-name">Password Generator</div>
+      <div class="tool-desc">Create strong, unbreakable passwords with custom length and character types.</div>
+      <div class="tool-arrow">→</div>
+    </a>
+
+    <a class="tool-card" href="word-counter.html" style="--c1:#4f8eff;--c2:#a78bfa">
+      <span class="tool-icon">📝</span>
+      <div class="tool-name">Word Counter</div>
+      <div class="tool-desc">Count words, characters, sentences and estimate reading time instantly.</div>
+      <div class="tool-arrow">→</div>
+    </a>
+
+    <a class="tool-card" href="age-calculator.html" style="--c1:#ffd166;--c2:#ff6b6b">
+      <span class="tool-icon">🎂</span>
+      <div class="tool-name">Age Calculator</div>
+      <div class="tool-desc">Find your exact age in years, months and days plus your next birthday countdown.</div>
+      <div class="tool-arrow">→</div>
+    </a>
+
+    <a class="tool-card" href="qr-code-generator.html" style="--c1:#ff6b6b;--c2:#ffd166">
+      <span class="tool-icon">📱</span>
+      <div class="tool-name">QR Code Generator</div>
+      <div class="tool-desc">Turn any link or text into a scannable QR code. Download as PNG instantly.</div>
+      <div class="tool-arrow">→</div>
+    </a>
+
+  </div>
+
+  <!-- AD BOTTOM -->
+  <div class="ad-slot" style="margin-top:32px">Advertisement — AdSense Code Here</div>
+</div>
+
+<footer>
+  © 2025 FreeToolHub.com — All tools are free to use &nbsp;
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="about.html">About</a>
+</footer>
+
+</body>
+</html>
