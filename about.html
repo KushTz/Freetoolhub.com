@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Us — FreeToolHub</title>
+<meta name="description" content="About FreeToolHub.com — free online tools for everyone. Learn about our mission and the tools we offer."/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080d18;--surface:#0f1624;--card:#131d2e;--border:#1a2840;--accent:#00e5b0;--accent2:#4f8eff;--text:#dce8f5;--muted:#5a7299;--sans:'Space Grotesk',sans-serif}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;padding-bottom:60px}
+nav{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:1.2rem;font-weight:700;text-decoration:none;color:var(--text)}
+.logo span{color:var(--accent)}
+.back{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:600;transition:color .2s}
+.back:hover{color:var(--accent)}
+.main{max-width:720px;margin:0 auto;padding:40px 20px}
+
+/* HERO */
+.hero{text-align:center;padding:20px 0 48px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,229,176,.1);border:1px solid rgba(0,229,176,.25);border-radius:30px;padding:6px 16px;font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;line-height:1.2;margin-bottom:14px}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--muted);font-size:.95rem;line-height:1.8;max-width:520px;margin:0 auto}
+
+/* MISSION */
+.mission{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;padding:28px 24px;margin-bottom:32px}
+.mission h2{font-size:1.1rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.mission p{font-size:.9rem;color:var(--muted);line-height:1.8}
+
+/* VALUES */
+.values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
+.value-box{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px}
+.value-icon{font-size:1.6rem;margin-bottom:10px}
+.value-title{font-size:.9rem;font-weight:700;margin-bottom:6px}
+.value-desc{font-size:.8rem;color:var(--muted);line-height:1.6}
+
+/* TOOLS */
+.tools-list{margin-bottom:32px}
+.tools-list h2{font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.tool-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.tool-row:last-child{border-bottom:none}
+.tool-emoji{font-size:1.5rem;flex-shrink:0}
+.tool-info-title{font-size:.9rem;font-weight:700;margin-bottom:3px}
+.tool-info-desc{font-size:.78rem;color:var(--muted)}
+.tool-link{margin-left:auto;color:var(--accent);text-decoration:none;font-size:.78rem;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.tool-link:hover{opacity:.7}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.stat-n{font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-l{font-size:.72rem;color:var(--muted);margin-top:4px}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,rgba(0,229,176,.1),rgba(79,142,255,.1));border:1.5px solid rgba(0,229,176,.2);border-radius:18px;padding:32px 24px;text-align:center;margin-bottom:16px}
+.cta h2{font-size:1.3rem;font-weight:700;margin-bottom:10px}
+.cta p{color:var(--muted);font-size:.88rem;margin-bottom:20px}
+.cta-btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;text-decoration:none;border-radius:12px;padding:13px 28px;font-weight:700;font-size:.92rem;transition:all .2s}
+.cta-btn:hover{opacity:.9;transform:translateY(-1px)}
+
+footer{text-align:center;color:var(--muted);font-size:.75rem;padding-top:20px;border-top:1px solid var(--border)}
+footer a{color:var(--accent);text-decoration:none;margin:0 6px}
+@media(max-width:480px){.values{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="index.html">Free<span>Tool</span>Hub</a>
+  <a class="back" href="index.html">← Home</a>
+</nav>
+
+<div class="main">
+
+  <div class="hero">
+    <div class="hero-badge">✦ About Us</div>
+    <h1>Tools for Everyone,<br/><span>Always Free</span></h1>
+    <p>FreeToolHub.com was built with one simple idea — give everyone access to useful online tools without paywalls, sign-ups, or tracking.</p>
+  </div>
+
+  <div class="mission">
+    <h2>🎯 Our Mission</h2>
+    <p>The internet is full of tools that promise to be free, then ask you to create an account, show you endless ads, or sell your data. We built FreeToolHub.com to be different.</p>
+    <p style="margin-top:10px">Every tool on our site works instantly in your browser — no login, no subscription, no data collection. Just open the tool and use it.</p>
+  </div>
+
+  <div class="values">
+    <div class="value-box">
+      <div class="value-icon">🔒</div>
+      <div class="value-title">Privacy First</div>
+      <div class="value-desc">All tools run locally in your browser. We never see, store, or share your data.</div>
+    </div>
+    <div class="value-box">
+      <div class="value-icon">⚡</div>
+      <div class="value-title">Always Fast</div>
+      <div class="value-desc">No loading screens or server delays. Results are instant, every time.</div>
+    </div>
+    <div class="value-box">
+      <div class="value-icon">🆓</div>
+      <div class="value-title">Truly Free</div>
+      <div class="value-desc">No hidden fees, no premium plans, no limits. All tools are 100% free forever.</div>
+    </div>
+    <div class="value-box">
+      <div class="value-icon">📱</div>
+      <div class="value-title">Works Everywhere</div>
+      <div class="value-desc">Fully responsive on any device — desktop, tablet, or mobile.</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">Free Tools</div></div>
+    <div class="stat"><div class="stat-n">0</div><div class="stat-l">Data Collected</div></div>
+    <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Free Uses</div></div>
+  </div>
+
+  <div class="tools-list">
+    <h2>Our Tools</h2>
+    <div class="tool-row">
+      <div class="tool-emoji">🔐</div>
+      <div>
+        <div class="tool-info-title">Password Generator</div>
+        <div class="tool-info-desc">Generate strong, secure passwords with custom settings</div>
+      </div>
+      <a class="tool-link" href="password-generator.html">Try it →</a>
+    </div>
+    <div class="tool-row">
+      <div class="tool-emoji">📝</div>
+      <div>
+        <div class="tool-info-title">Word Counter</div>
+        <div class="tool-info-desc">Count words, characters, sentences and reading time</div>
+      </div>
+      <a class="tool-link" href="word-counter.html">Try it →</a>
+    </div>
+    <div class="tool-row">
+      <div class="tool-emoji">🎂</div>
+      <div>
+        <div class="tool-info-title">Age Calculator</div>
+        <div class="tool-info-desc">Find your exact age, total days lived and next birthday</div>
+      </div>
+      <a class="tool-link" href="age-calculator.html">Try it →</a>
+    </div>
+    <div class="tool-row">
+      <div class="tool-emoji">📱</div>
+      <div>
+        <div class="tool-info-title">QR Code Generator</div>
+        <div class="tool-info-desc">Turn any URL or text into a downloadable QR code</div>
+      </div>
+      <a class="tool-link" href="qr-code-generator.html">Try it →</a>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Ready to use our tools?</h2>
+    <p>No sign-up needed. Just click and start using any tool for free.</p>
+    <a class="cta-btn" href="index.html">Browse All Tools →</a>
+  </div>
+
+  <footer>© 2025 <a href="index.html">FreeToolHub.com</a> · <a href="privacy.html">Privacy Policy</a></footer>
+</div>
+</body>
+</html>
